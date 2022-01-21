@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 export const DetailsMenu = ({ data }) => {
   const {
     Title,
@@ -17,7 +15,6 @@ export const DetailsMenu = ({ data }) => {
     Poster
   } = data;
 
-  console.log(data);
   return (
     <div style={{ display: "flex" }}>
       <img src={Poster} alt="No Poster" style={{ paddingRight: "16px" }} />

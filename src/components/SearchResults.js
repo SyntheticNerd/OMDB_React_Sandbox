@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
-import { getMovieDetailsById } from "./utils";
 import { DetailsMenu } from "./DetailsMenu";
-import { element } from "prop-types";
 import { ArrowButton } from "./ArrowButton";
 
 const searchArrayStyle = {
@@ -48,7 +46,6 @@ const buttonLeft = {
 export const SearchResults = ({ searchData, searchString, setError }) => {
   let searchArr = [];
   const [clickedDetails, setClickedDetails] = useState({});
-  const [detailsOpen, setDetailsOpen] = useState(false);
   const [arrElement, setArrElement] = useState({});
   let _arrElement = document.getElementById("searchArray1");
 
@@ -58,7 +55,6 @@ export const SearchResults = ({ searchData, searchString, setError }) => {
 
   const moveArrRight = () => {
     const scrollWidth = arrElement.offsetWidth * 0.8;
-    console.log(arrElement);
     arrElement.scrollLeft += scrollWidth;
   };
   const moveArrLeft = () => {

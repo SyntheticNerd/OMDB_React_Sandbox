@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { getMovieDetailsById } from "./utils";
 import { getApiId } from "./variables";
 
@@ -42,9 +41,6 @@ const MovieCard = ({
   setClickedDetails,
   setError
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [oldData, setOldData] = useState({});
-
   if (data) {
     const openDetails = async (data) => {
       let detailData = await getMovieDetailsById(getApiId(), data.imdbID);
