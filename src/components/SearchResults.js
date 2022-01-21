@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import { getMovieDetailsById } from "./utils";
 import { DetailsMenu } from "./DetailsMenu";
+import { element } from "prop-types";
+import { ArrowButton } from "./ArrowButton";
 
 const searchArrayStyle = {
   display: "flex",
@@ -10,23 +12,60 @@ const searchArrayStyle = {
   //eventually I might remove this scroll bar
   overflowY: "hidden",
   height: "300px",
-  padding: "0px 32px 0px 32px",
-  margin: "32px 0px 8px 0px"
+  padding: "0px 48px 0px 48px",
+  margin: "32px 0px 8px 0px",
+  scrollbarColor: "rgba(225, 225, 225, 0%) rgba(225, 225, 225, 0%)",
+  scrollbarWidth: "thin",
+  scrollBehavior: "smooth"
 };
 
 const buttonRight = {
+  transform: "rotate(180deg)",
+  color: "white",
+  border: "none",
   position: "absolute",
-  width: "80px",
+  width: "60px",
   height: "inherit",
   right: "0px",
-  opacity: "50%"
+  // opacity: "50%",
+  background:
+    "linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(16,16,16,1) 75%, rgba(16,16,16,1) 100%)"
 };
+
+const buttonLeft = {
+  border: "none",
+  position: "absolute",
+  width: "60px",
+  height: "inherit",
+  left: "0px",
+  // opacity: "50%",
+  background:
+    "linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(16,16,16,1) 75%, rgba(16,16,16,1) 100%)"
+};
+
 //button right and left will move the array
 
 export const SearchResults = ({ searchData, searchString, setError }) => {
   let searchArr = [];
   const [clickedDetails, setClickedDetails] = useState({});
   const [detailsOpen, setDetailsOpen] = useState(false);
+  const [arrElement, setArrElement] = useState({});
+  let _arrElement = document.getElementById("searchArray1");
+
+  useEffect(() => {
+    setArrElement(document.getElementById("searchArray1"));
+  }, [_arrElement]);
+
+  const moveArrRight = () => {
+    const scrollWidth = arrElement.offsetWidth * 0.8;
+    console.log(arrElement);
+    arrElement.scrollLeft += scrollWidth;
+  };
+  const moveArrLeft = () => {
+    const scrollWidth = arrElement.offsetWidth * 0.8;
+    arrElement.scrollLeft -= scrollWidth;
+  };
+
   if (searchData.Response === "True") {
     searchArr = searchData.Search;
   }
@@ -39,7 +78,7 @@ export const SearchResults = ({ searchData, searchString, setError }) => {
       }}
     >
       <p style={{}}>Search Results for: {searchString}</p>
-      <div id="searchArray" style={searchArrayStyle}>
+      <div id="searchArray1" style={searchArrayStyle}>
         {searchArr.map((data) => (
           //these parentheses are very important make sure you dont use curlies
           <MovieCard
@@ -52,7 +91,9 @@ export const SearchResults = ({ searchData, searchString, setError }) => {
             setError={setError}
           />
         ))}
-        <button style={buttonRight}>Button Right</button>
+        <ArrowButton onClick={moveArrLeft} style={buttonLeft} />
+        <ArrowButton onClick={moveArrRight} style={buttonRight} />
+        {/* <button style={buttonLeft} onClick={moveArrLeft}></button> */}
       </div>
       {clickedDetails.Response === "True" ? (
         <DetailsMenu data={clickedDetails} />

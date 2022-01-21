@@ -56,7 +56,11 @@ const MovieCard = ({
       }
     };
     return (
-      <div id={`search${data.imdbID}`} style={movieCardStyle}>
+      <div
+        id={`search${data.imdbID}`}
+        style={movieCardStyle}
+        onClick={() => openDetails(data)}
+      >
         <img
           id="posterImg"
           style={posterStyle}
