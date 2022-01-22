@@ -4,15 +4,7 @@ import { getMoviesBySearchTerm } from "./utils";
 import { SearchResults } from "./SearchResults";
 import MovieCard from "./MovieCard";
 import { getApiId } from "./variables";
-
-const searchBar = {
-  display: "flex",
-  // flexDirection: "column",
-  padding: "16px 0px 4px 0px",
-  alignItems: "center",
-  justifyContent: "center",
-  textAlign: "center"
-};
+import { searchBarStyle } from "./styles";
 
 const Search = ({ setSearching, setSearchData, setSearchString, setError }) => {
   const [searchTitle, setSearchTitle] = useState("");
@@ -39,15 +31,11 @@ const Search = ({ setSearching, setSearchData, setSearchString, setError }) => {
       setSearching(false);
       e.target[0].value = "";
     }
-
-    // console.log(data);
-
-    // setData(data);
   };
 
   return (
     <>
-      <form id="searchBar" style={searchBar} onSubmit={onSubmit}>
+      <form id="searchBar" style={searchBarStyle} onSubmit={onSubmit}>
         <div id="searchField">
           {/* <label>Search</label> */}
           <input

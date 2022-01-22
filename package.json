@@ -1,7 +1,7 @@
 {
   "name": "omdb-react-sandbox-git",
   "version": "1.0.0",
-  "description": "Test for git hub",
+  "description": "Sandbox connected to a git repo",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {

@@ -2,46 +2,7 @@ import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import { DetailsMenu } from "./DetailsMenu";
 import { ArrowButton } from "./ArrowButton";
-
-const searchArrayStyle = {
-  display: "flex",
-  width: "100vw",
-  overflowX: "scroll",
-  //eventually I might remove this scroll bar
-  overflowY: "hidden",
-  height: "300px",
-  padding: "0px 48px 0px 48px",
-  margin: "32px 0px 8px 0px",
-  scrollbarColor: "rgba(225, 225, 225, 0%) rgba(225, 225, 225, 0%)",
-  scrollbarWidth: "thin",
-  scrollBehavior: "smooth"
-};
-
-const buttonRight = {
-  transform: "rotate(180deg)",
-  color: "white",
-  border: "none",
-  position: "absolute",
-  width: "60px",
-  height: "inherit",
-  right: "0px",
-  // opacity: "50%",
-  background:
-    "linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(16,16,16,1) 75%, rgba(16,16,16,1) 100%)"
-};
-
-const buttonLeft = {
-  border: "none",
-  position: "absolute",
-  width: "60px",
-  height: "inherit",
-  left: "0px",
-  // opacity: "50%",
-  background:
-    "linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(16,16,16,1) 75%, rgba(16,16,16,1) 100%)"
-};
-
-//button right and left will move the array
+import { searchArrayStyle, buttonRightStyle, buttonLeftStyle } from "./styles";
 
 export const SearchResults = ({ searchData, searchString, setError }) => {
   let searchArr = [];
@@ -87,8 +48,8 @@ export const SearchResults = ({ searchData, searchString, setError }) => {
             setError={setError}
           />
         ))}
-        <ArrowButton onClick={moveArrLeft} style={buttonLeft} />
-        <ArrowButton onClick={moveArrRight} style={buttonRight} />
+        <ArrowButton onClick={moveArrLeft} style={buttonLeftStyle} />
+        <ArrowButton onClick={moveArrRight} style={buttonRightStyle} />
         {/* <button style={buttonLeft} onClick={moveArrLeft}></button> */}
       </div>
       {clickedDetails.Response === "True" ? (

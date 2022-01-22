@@ -1,3 +1,5 @@
+const detailPosterStyle = {};
+
 export const DetailsMenu = ({ data }) => {
   const {
     Title,

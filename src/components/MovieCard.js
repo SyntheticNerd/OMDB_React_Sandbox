@@ -1,37 +1,12 @@
 import { getMovieDetailsById } from "./utils";
 import { getApiId } from "./variables";
-
-let movieCardStyle = {
-  borderRadius: "15%",
-  position: "relative",
-  width: "180px",
-  margin: "0px 16px 0px 16px"
-};
-let posterStyle = {
-  borderRadius: "8px",
-  overflow: "hidden",
-  width: "180px",
-  height: "100%"
-};
-let briefStyle = {
-  padding: "8px",
-  color: "rgba(255, 255, 255, 0.9)",
-  borderRadius: "0px 0px 8px 8px",
-  height: "30%",
-  width: "inherit",
-  backgroundColor: "rgba(31, 31, 31, 0.6)",
-  position: "absolute",
-  bottom: "0px"
-};
-let movieTypeStyle = {
-  position: "absolute",
-  backgroundColor: "grey",
-  textAlign: "center",
-  padding: ".2em",
-  width: "5em",
-  borderRadius: "8px",
-  bottom: "8px"
-};
+import { useEffect } from "react";
+import {
+  movieCardStyle,
+  posterStyle,
+  briefStyle,
+  movieTypeStyle
+} from "./styles";
 
 const MovieCard = ({
   poster,
@@ -41,6 +16,10 @@ const MovieCard = ({
   setClickedDetails,
   setError
 }) => {
+  if (title.length > 20) {
+    title = `${title.slice(0, 19).trim()}...`;
+  }
+  //slices string if it is too long trim removes white space
   if (data) {
     const openDetails = async (data) => {
       let detailData = await getMovieDetailsById(getApiId(), data.imdbID);
