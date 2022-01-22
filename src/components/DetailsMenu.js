@@ -1,4 +1,4 @@
-const detailPosterStyle = {};
+import { detailsPosterStyle } from "./styles";
 
 export const DetailsMenu = ({ data }) => {
   const {
@@ -19,8 +19,12 @@ export const DetailsMenu = ({ data }) => {
 
   return (
     <div style={{ display: "flex" }}>
-      <img src={Poster} alt="No Poster" style={{ paddingRight: "16px" }} />
-      <div style={{ width: "160px" }}>
+      <img
+        src={Poster}
+        alt="No Poster"
+        style={{ paddingRight: "16px", height: "200px" }}
+      />
+      <div style={{ width: "400px" }}>
         <p>{Title}</p>
         <p>{Year}</p>
         <p>{Plot}</p>

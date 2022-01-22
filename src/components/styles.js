@@ -87,3 +87,7 @@ export const buttonLeftStyle = {
   background:
     "linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(16,16,16,1) 75%, rgba(16,16,16,1) 100%)"
 };
+//-------------------------------------------------DETAILS POSTER
+export const detailPosterStyle = {
+  height: "200px"
+};
