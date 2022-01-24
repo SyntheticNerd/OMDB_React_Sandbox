@@ -11,7 +11,7 @@ function App() {
   const [searchData, setSearchData] = useState({});
   const [searchString, setSearchString] = useState("");
   const [error, setError] = useState(null);
-// test
+  // test
   return (
     <>
       {/*--------------Login Screen--------------------*/}
@@ -27,11 +27,13 @@ function App() {
       )}
       {/*--------------Display Search Results--------------------*/}
       {searching ? (
-        <SearchResults
-          searchData={searchData}
-          searchString={searchString}
-          setError={setError}
-        />
+        <>
+          <SearchResults
+            searchData={searchData}
+            searchString={searchString}
+            setError={setError}
+          />
+        </>
       ) : (
         <div style={{ display: "none" }}></div>
       )}

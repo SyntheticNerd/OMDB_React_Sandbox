@@ -14,53 +14,61 @@ const MovieCard = ({
   type,
   data,
   setClickedDetails,
-  setError
+  clickedDetails,
+  setError,
+  setToggleDetails,
+  toggleDetails
 }) => {
-  if (title.length > 20) {
-    title = `${title.slice(0, 19).trim()}...`;
-  }
+  const clickHandeler = () => {
+    let _oldTitle = clickedDetails.Title.replace(/[^a-zA-Z0-9]/g, "");
+    let clickedTitle = title.replace(/[^a-zA-Z0-9]/g, "");
+    _oldTitle === clickedTitle && toggleDetails
+      ? setToggleDetails(false)
+      : openDetails(data);
+  };
+
+  const openDetails = async (data) => {
+    setToggleDetails(true);
+    let detailData = await getMovieDetailsById(getApiId(), data.imdbID);
+    if (detailData.Response === "True") {
+      setClickedDetails(detailData);
+      // console.log(detailData);
+    } else {
+      setError(detailData.Error);
+    }
+  };
+
   //slices string if it is too long trim removes white space
   if (data) {
-    const openDetails = async (data) => {
-      let detailData = await getMovieDetailsById(getApiId(), data.imdbID);
-      if (detailData.Response === "True") {
-        setClickedDetails(detailData);
-        // console.log(detailData);
-      } else {
-        setError(detailData.Error);
-      }
-    };
     return (
-      <div
-        id={`search${data.imdbID}`}
-        style={movieCardStyle}
-        onClick={() => openDetails(data)}
-      >
-        <img
-          id="posterImg"
-          style={posterStyle}
-          src={poster}
-          alt="No Poster Available"
-        ></img>
-        <div id="movieInfo" style={briefStyle}>
-          <div id="cardTitleRow">
-            <p id="titleText">{title}</p>
-            <div id="typeContainer" style={movieTypeStyle}>
-              <p id="movieType">{type}</p>
+      <>
+        <div
+          id={`search${data.imdbID}`}
+          style={movieCardStyle}
+          onClick={() => clickHandeler()}
+        >
+          <img
+            id="posterImg"
+            style={posterStyle}
+            src={poster}
+            alt="No Poster Available"
+          ></img>
+          <div id="movieInfo" style={briefStyle}>
+            <div id="cardTitleRow">
+              <p
+                id="titleText"
+                style={{ height: "2.3em", overflowY: "hidden" }}
+              >
+                {/* {title.length > 20 ? `${title.substr(0, 40).trim()}` : title} */}
+                {title}
+              </p>
+              <div id="typeContainer" style={movieTypeStyle}>
+                <p id="movieType">{type}</p>
+              </div>
             </div>
           </div>
-          {/* <div id="detailsBtn">
-            <input
-              value="Details"
-              id="moreDetails"
-              type="button"
-              onClick={() => {
-                openDetails(data);
-              }}
-            />
-          </div> */}
         </div>
-      </div>
+      </>
     );
   } else {
     return <p>Try Searching for Something</p>;

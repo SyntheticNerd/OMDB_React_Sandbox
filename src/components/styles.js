@@ -63,7 +63,6 @@ export const movieTypeStyle = {
   borderRadius: "8px",
   bottom: "8px"
 };
-
 //------------------------------------BUTTONS
 export const buttonRightStyle = {
   transform: "rotate(180deg)",

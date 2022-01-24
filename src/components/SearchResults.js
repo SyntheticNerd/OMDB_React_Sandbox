@@ -8,6 +8,7 @@ export const SearchResults = ({ searchData, searchString, setError }) => {
   let searchArr = [];
   const [clickedDetails, setClickedDetails] = useState({});
   const [arrElement, setArrElement] = useState({});
+  const [toggleDetails, setToggleDetails] = useState([]);
   let _arrElement = document.getElementById("searchArray1");
 
   useEffect(() => {
@@ -45,15 +46,21 @@ export const SearchResults = ({ searchData, searchString, setError }) => {
             type={data.Type}
             data={data}
             setClickedDetails={setClickedDetails}
+            clickedDetails={clickedDetails}
             setError={setError}
+            setToggleDetails={setToggleDetails}
+            toggleDetails={toggleDetails}
           />
         ))}
         <ArrowButton onClick={moveArrLeft} style={buttonLeftStyle} />
         <ArrowButton onClick={moveArrRight} style={buttonRightStyle} />
         {/* <button style={buttonLeft} onClick={moveArrLeft}></button> */}
       </div>
-      {clickedDetails.Response === "True" ? (
-        <DetailsMenu data={clickedDetails} />
+      {clickedDetails.Response === "True" && toggleDetails === true ? (
+        <DetailsMenu
+          data={clickedDetails}
+          setToggleDetails={setToggleDetails}
+        />
       ) : (
         <></>
       )}
