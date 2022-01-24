@@ -6,7 +6,7 @@ import { searchArrayStyle, buttonRightStyle, buttonLeftStyle } from "./styles";
 
 export const SearchResults = ({ searchData, searchString, setError }) => {
   let searchArr = [];
-  const [clickedDetails, setClickedDetails] = useState({});
+  const [clickedDetails, setClickedDetails] = useState({ Title: "" });
   const [arrElement, setArrElement] = useState({});
   const [toggleDetails, setToggleDetails] = useState([]);
   let _arrElement = document.getElementById("searchArray1");
