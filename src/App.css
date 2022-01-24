@@ -5,10 +5,11 @@
 }
 
 #root {
-  height: 100vh;
-  width: 100vw;
-  background-color: #101010;
+  font-family: "Poppins", sans-serif;
+  background-color: #121212;
   color: rgba(255, 255, 255, 88%);
+  min-height: 100vh;
+  max-height: fit-content;
 }
 
 #searchArray::-webkit-scrollbar {

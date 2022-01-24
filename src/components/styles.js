@@ -1,6 +1,6 @@
 //-------------------------------------LOGIN
 export const logInBlockStyle = {
-  height: "100%",
+  height: "100vh",
   display: "flex",
   justifyContent: "center",
   alignItems: "center"
@@ -20,11 +20,11 @@ export const searchBarStyle = {
 };
 export const searchArrayStyle = {
   display: "flex",
-  width: "100vw",
+  width: "96vw",
   overflowX: "scroll",
   //eventually I might remove this scroll bar
   overflowY: "hidden",
-  height: "200px",
+  height: "230px",
   padding: "0px 48px 0px 48px",
   margin: "32px 0px 8px 0px",
   scrollbarColor: "rgba(225, 225, 225, 0%) rgba(225, 225, 225, 0%)",
@@ -33,10 +33,13 @@ export const searchArrayStyle = {
 };
 //---------------------------------MOVIE CARD
 export const movieCardStyle = {
+  height: "200px",
   borderRadius: "15%",
   position: "relative",
   width: "130px",
-  margin: "0px 16px 0px 16px"
+  margin: "0px 16px 0px 16px",
+  boxShadow:
+    "0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2)"
 };
 export const posterStyle = {
   borderRadius: "8px",
@@ -52,7 +55,9 @@ export const briefStyle = {
   width: "inherit",
   backgroundColor: "rgba(31, 31, 31, 0.6)",
   position: "absolute",
-  bottom: "0px"
+  bottom: "0px",
+  lineHeight: "1.1em",
+  fontSize: "14px"
 };
 export const movieTypeStyle = {
   position: "absolute",
@@ -61,7 +66,7 @@ export const movieTypeStyle = {
   padding: ".2em",
   width: "5em",
   borderRadius: "8px",
-  bottom: "8px"
+  bottom: "12px"
 };
 //------------------------------------BUTTONS
 export const buttonRightStyle = {
@@ -87,6 +92,3 @@ export const buttonLeftStyle = {
     "linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(16,16,16,1) 75%, rgba(16,16,16,1) 100%)"
 };
 //-------------------------------------------------DETAILS POSTER
-export const detailPosterStyle = {
-  height: "200px"
-};

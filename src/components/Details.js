@@ -1,5 +1,3 @@
-import { detailsPosterStyle } from "./styles";
-
 const boxMe = {
   marginRight: "16px",
   backgroundColor: "grey",
@@ -12,8 +10,7 @@ const section = {
   margin: "16px 0px"
 };
 
-export const DetailsMenu = ({ data, setToggleDetails }) => {
-  debugger;
+export const Details = ({ data, setToggleDetails }) => {
   const {
     Title,
     Year,
@@ -39,11 +36,12 @@ export const DetailsMenu = ({ data, setToggleDetails }) => {
       style={{
         display: "flex",
         marginLeft: "8px",
-        width: "600px",
-        height: "300px"
+        maxWidth: "800px",
+        height: "fit-content",
+        backgroundColor: "#121212"
       }}
     >
-      <img src={Poster} alt="No Poster" />
+      <img src={Poster} alt="No Poster" style={{ height: "300px" }} />
       <div id="decription" style={{ marginLeft: "16px" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <h1 style={{ width: "80%" }}>{Title}</h1>

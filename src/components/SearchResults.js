@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
-import { DetailsMenu } from "./DetailsMenu";
+import { Details } from "./Details";
 import { ArrowButton } from "./ArrowButton";
 import { searchArrayStyle, buttonRightStyle, buttonLeftStyle } from "./styles";
 
@@ -57,10 +57,7 @@ export const SearchResults = ({ searchData, searchString, setError }) => {
         {/* <button style={buttonLeft} onClick={moveArrLeft}></button> */}
       </div>
       {clickedDetails.Response === "True" && toggleDetails === true ? (
-        <DetailsMenu
-          data={clickedDetails}
-          setToggleDetails={setToggleDetails}
-        />
+        <Details data={clickedDetails} setToggleDetails={setToggleDetails} />
       ) : (
         <></>
       )}

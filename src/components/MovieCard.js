@@ -57,7 +57,7 @@ const MovieCard = ({
             <div id="cardTitleRow">
               <p
                 id="titleText"
-                style={{ height: "2.3em", overflowY: "hidden" }}
+                style={{ height: "3.4em", overflowY: "hidden" }}
               >
                 {/* {title.length > 20 ? `${title.substr(0, 40).trim()}` : title} */}
                 {title}
